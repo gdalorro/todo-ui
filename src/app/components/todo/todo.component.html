@@ -1,0 +1,15 @@
+<div class="todo-page container-fluid w-100 h-100 d-flex flex-column justify-content-start align-items-center">
+    <br><br>
+    <div class="p-3 m-3">
+        <app-card [headerTitle]="'New To Do'" [purpose]="'create'" (createdTodo)="createdTodo($event)"></app-card>
+    </div>
+    <br>
+    <div class="container">
+        <div class="row px-5 mx-5">
+            <div class="col-12 col-lg-6 p-2 my-1 d-flex justify-content-center" *ngFor="let todo of $todoList | async">
+                <app-card [purpose]="'display'" [todo]="todo" 
+                (updatedTodo)="updatedTodo($event)" (deletedTodo)="deletedTodo($event)"></app-card>
+            </div>
+        </div>
+    </div>
+</div>

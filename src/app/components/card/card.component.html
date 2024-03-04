@@ -1,0 +1,25 @@
+<div class="card" 
+    [ngClass]="{'active': purpose === 'edit' || purpose === 'delete', 
+    'todo': purpose === 'display' && !todo.isCompleted, 
+    'done': purpose === 'display' && todo.isCompleted,
+    'delete': purpose === 'delete' }">
+    <div *ngIf="purpose === 'create'" class="card-header">{{headerTitle}}</div>
+    <div class="card-body d-flex flex-column justify-content-center align-items-start">
+        <p *ngIf="purpose === 'display' || purpose === 'delete'" class="card-text p-2">{{todo ? todo.title : ''}}</p>
+        <div *ngIf="purpose === 'create' || purpose === 'edit'" class="w-100" [formGroup]="todoForm">
+            <input class="w-100 p-2" type="text" formControlName="title">
+        </div>
+        <div class="w-100 justify-content-end align-items-center" 
+            [ngClass]="{'d-flex': purpose === 'create', 'display-hover': purpose === 'display', 
+            'editing': purpose === 'edit', 'todelete': purpose === 'delete'}">
+            <ng-container *ngFor="let button of buttons">
+                <app-button *ngIf="purpose == button.purpose" 
+                    [name]="todo && todo.isCompleted && button.name === 'Done' ? 'Undone' : button.name" 
+                    [form]="todoForm" [todo]="todo"
+                    (isEdit)="checkEdit($event)" (savedForm)="getSavedForm($event)"
+                    (isDelete)="checkDelete($event)" (confirmDelete)="confirmDelete()"
+                    (createdForm)="getCreatedForm($event)" (isDone)="checkDone($event)"></app-button>
+            </ng-container>
+        </div>
+    </div>
+</div>

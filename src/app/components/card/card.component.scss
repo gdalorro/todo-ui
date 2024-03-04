@@ -1,0 +1,56 @@
+.card{
+    width: 30vw;
+    min-width: 350px;
+    max-width: 500px;
+
+    &:hover{
+        box-shadow: 2px 2px 4px #B4B4B8;
+    }
+}
+
+p{
+    margin-bottom: 0 !important;
+}
+
+.card-header{
+    background: #E5E483;
+    font-weight: 600;
+}
+
+
+input{
+    outline: none;
+    border: none;
+    border-radius: 0.25rem;
+    background: #E3E1D9;
+    box-shadow: inset 2px -2px 4px #B4B4B8;
+}
+
+.display-hover{
+    display: none;
+}
+
+.card :hover .display-hover, .editing, .todelete{
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 90%;
+    padding-right: 0.8rem;
+    z-index: 1;
+}
+
+.active{
+    box-shadow: 2px 2px 4px #B4B4B8;
+}
+
+.todo{
+    background: #E5E483;
+}
+
+.done{
+    background: #BFD8AF;
+}
+
+.delete{
+    background: #F47C7C;
+}
